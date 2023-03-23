@@ -1,16 +1,14 @@
-import './App.css';
-import MyNavbar from './navbar';
-import Items from './Items';
+import "./App.css";
+//import MyNavbar from "./navbar";
+import Items from "./Items";
+//import { useState } from "react";
 
 function App() {
+  
   return (
     <div className="App">
       
-        <MyNavbar/>
-        <br></br>
-        I<Items/>
-        
-      
+      I<Items />
     </div>
   );
 }

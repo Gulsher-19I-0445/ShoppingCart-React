@@ -31,10 +31,8 @@ export default function MyNavbar() {
               title="Categories"
               id="basic-nav-dropdown"
             >
-              <NavDropdown.Item >men's clothing</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Pants
-              </NavDropdown.Item>
+              <NavDropdown.Item>men's clothing</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.2">Pants</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="#action/3.4">

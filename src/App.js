@@ -6,7 +6,7 @@ import Items from "./Items";
 function App() {
   return (
     <div className="App">
-      I<Items />
+      <Items />
     </div>
   );
 }

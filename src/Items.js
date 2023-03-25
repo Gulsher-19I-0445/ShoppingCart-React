@@ -5,6 +5,8 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 export default function Items() {
+
+  const[rendState,setrendState]=useState(-1);
   const [products, setproducts] = useState([]);
   const [cat, setCat] = useState("all");
   const fetchAPI = () => {
@@ -16,6 +18,12 @@ export default function Items() {
     fetchAPI();
   }, []);
 
+  function condRenderer(ID){
+    setrendState(ID);
+    
+  }
+
+  
   console.log(products);
   return (
     <div>
@@ -32,7 +40,7 @@ export default function Items() {
             <Nav className="me-auto">
               <Nav.Link
                 style={{ marginright: "20px", marginLeft: "20px" }}
-                href="#home"
+                onClick={() => setrendState(-1)}
               >
                 Home
               </Nav.Link>
@@ -79,36 +87,63 @@ export default function Items() {
         </>
       </Navbar>
       <br></br>
-      {products.length > 0 && (
-        <div className="row">
-          {products.map(
-            (
-              user //Send data as props to Card Components
-            ) => (
-              <div className="col-lg-3 mb-1 d-flex align-items-stretch">
-                {cat === user.category || cat === "all" ? (
+
+      {(() => {
+        if (rendState===-1) {
+          return (
+            products.length > 0 && (
+              <div className="row">
+                {products.map(
+                  (
+                    user //Send data as props to Card Components
+                  ) => (
+                    
+                    <div className="col-lg-3 mb-1 d-flex align-items-stretch">
+                      {cat === user.category || cat === "all" ? (
+                        
+                        <MyCards
+                          m1={user.id}
+                          title={user.title}
+                          image={user.image}
+                          description={user.description}
+                          change = {condRenderer}
+                        ></MyCards>
+                      ) : (
+                        <></>
+                      )}
+                      {/* if({cat}===user.category ||{cat==="all"}){
                   <MyCards
                     key={user.id}
                     title={user.title}
                     image={user.image}
                     description={user.description}
                   ></MyCards>
-                ) : (
-                  <></>
+                  } */}
+                    </div>
+                  )
                 )}
-                {/* if({cat}===user.category ||{cat==="all"}){
-            <MyCards
-              key={user.id}
-              title={user.title}
-              image={user.image}
-              description={user.description}
-            ></MyCards>
-            } */}
               </div>
             )
-          )}
-        </div>
-      )}
+          )
+        } else if (rendState!==-1) {
+          console.log(rendState);
+          return (
+            products[rendState].title
+          //   products.map(
+          //     (
+          //       user //Send data as props to Card Components
+          //     ) => (
+          //   <h1>{user[0].title}</h1>
+          //     )
+          // )
+          )
+        } else {
+          return (
+            <div>catch all</div>
+          )
+        }
+      })()}
+
     </div>
   );
 }

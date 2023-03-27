@@ -1,9 +1,9 @@
 import Image from 'react-bootstrap/Image'
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 export default function MyProd(props) {
   //console.log(props.m1);
 
-  const[cartState,setCart]=useState("")
+  // const[cartState,setCart]=useState("")
 
   
   

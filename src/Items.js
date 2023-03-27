@@ -15,6 +15,7 @@ export default function Items() {
         { id: nextId++, name: currentItem }
       ]);
     console.log(cartItems)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
 },[currentItem])
   const [cartItems, setCartItems] = useState([])
   const[rendState,setrendState]=useState(-1);
@@ -147,7 +148,7 @@ export default function Items() {
           //     (
           //       user //Send data as props to Card Components
           //     ) => (
-          //   <h1>{user[0].title}</h1>
+          //   <h1>{user[0].title}</h1
           //     )
           // )
           )

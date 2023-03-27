@@ -41,3 +41,14 @@
     transform: rotate(360deg);
   }
 }
+.container Image {
+  /* display: flex; */
+  justify-content: start;
+  align-items: center; 
+}
+
+.container h1 {
+  text-align: left;
+  justify-content: start;
+  align-items: center; 
+}

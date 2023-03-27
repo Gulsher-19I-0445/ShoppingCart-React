@@ -4,8 +4,19 @@ import MyCards from "./card";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
+import MyProd from "./productDetail";
 export default function Items() {
-
+  let nextId = 0;
+  const[currentItem,setCurrItem]=useState(-1);
+  useEffect(() => {
+    
+      setCartItems([
+        ...cartItems,
+        { id: nextId++, name: currentItem }
+      ]);
+    console.log(cartItems)
+},[currentItem])
+  const [cartItems, setCartItems] = useState([])
   const[rendState,setrendState]=useState(-1);
   const [products, setproducts] = useState([]);
   const [cat, setCat] = useState("all");
@@ -128,7 +139,10 @@ export default function Items() {
         } else if (rendState!==-1) {
           console.log(rendState);
           return (
-            products[rendState].title
+           <>
+            <MyProd  title={products[rendState].title} price={products[rendState].price} description = {products[rendState].description} image={products[rendState].image} cart = {setCurrItem}> </MyProd>
+            
+            </>
           //   products.map(
           //     (
           //       user //Send data as props to Card Components
